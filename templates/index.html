@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="form-area pure-u-1">
+
+        <form id="form-add" class="pure-form pure-u-1-1" action="{% url 'myapp:add' %}" method="post">
+            <h3>Track your bad habit</h3>
+            <fieldset>
+                {% csrf_token %}
+                <input type="text" class="pure-input-1-2" name="title" id="title" value=""
+                       placeholder="I will stop..." required/>
+            </fieldset>
+            <button type="submit" class="pure-button notice">Track your progress</button>
+            <small>No personal information, habits are <a href="/latest">public</a></small>
+        </form>
+
+    </div>
+{% endblock %}
+

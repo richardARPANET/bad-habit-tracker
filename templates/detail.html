@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}{{ habit.title }}{% endblock %}
+
+{% block content %}
+    <div class="pure-u-1">
+        <h2>{{ habit.title }}</h2>
+
+        <p>You've quit this habit for:
+            <b><span id="datetick" data-track-date="{{ habit.track_date|date:'d/m/Y-H:i:s' }}" class="time">
+           {{ habit.track_date|timesince:habit.time_now }}
+        </span></b>
+        </p>
+
+        <p>Bookmark link: <a
+                href="http://example.com/habit/{{ habit.hash }}"/>http://example.com/habit/{{ habit.hash }}</a></p>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Latest{% endblock %}
+
+{% block content %}
+
+    <div class="pure-u-1">
+
+        <h3>Latest</h3>
+
+        {% if latest_habits_list %}
+            <table class="pure-table">
+                <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Time ago</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                {% for habit in latest_habits_list %}
+                    <tr>
+                        <td><a href="/habit/{{ habit.hash }}">{{ habit.title }}</a></td>
+                        <td>{{ habit.track_date|timesince:habit.time_now }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No habits yet, <a href="/">add one</a></p>
+        {% endif %}
+    </div>
+
+    </div> <!-- pure-g -->
+{% endblock %}

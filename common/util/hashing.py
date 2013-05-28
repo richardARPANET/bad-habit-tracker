@@ -4,8 +4,8 @@ ALPHABET = "bcdfghjklmnpqrstvwxyz0123456789BCDFGHJKLMNPQRSTVWXYZ"
 BASE = len(ALPHABET)
 MAXLEN = 5
 
-def encode_id(n):
 
+def encode_id(n):
     pad = MAXLEN - 1
     n = int(n + pow(BASE, pad))
 
@@ -17,12 +17,13 @@ def encode_id(n):
         s.append(ALPHABET[a:a+1])
         n = n - (a * bcp)
         t -= 1
-        if t < 0: break
+        if t < 0:
+            break
 
     return "".join(reversed(s))
 
-def decode_id(n):
 
+def decode_id(n):
     n = "".join(reversed(n))
     s = 0
     l = len(n) - 1
@@ -31,7 +32,8 @@ def decode_id(n):
         bcpow = int(pow(BASE, l - t))
         s = s + ALPHABET.index(n[t:t+1]) * bcpow
         t += 1
-        if t > l: break
+        if t > l:
+            break
 
     pad = MAXLEN - 1
     s = int(s - pow(BASE, pad))
