@@ -3,7 +3,7 @@ from django.utils import timezone
 from django.template import Context
 
 from apps.myapp.models import Habit
-from common.util import hashing
+from common.util import hashing, timesince
 
 
 def index(request):
@@ -30,6 +30,7 @@ def detail(request, id_hash=None):
 
     habit.time_now = timezone.now()
     habit.hash = hash
+    habit.timesince = timesince.timesince(habit.track_date)
 
     return render(request, 'detail.html', {'habit': habit})
 
