@@ -21,7 +21,7 @@
                 {% for habit in latest_habits_list %}
                     <tr>
                         <td><a href="/habit/{{ habit.hash }}">{{ habit.title }}</a></td>
-                        <td>{{ habit.track_date|timesince:habit.time_now }}</td>
+                        <td>{{ habit.timesince }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>

@@ -16,6 +16,7 @@ def latest(request):
     for item in latest_habits_list:
         item.time_now = timezone.now()
         item.hash = hashing.encode_id(item.id)
+        item.timesince = timesince.timesince(item.track_date)
 
     context = Context({
         'latest_habits_list': latest_habits_list,
